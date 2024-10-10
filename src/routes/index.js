@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const userRouter = require('./userRoutes');
 
 router.get('/', (req, res) => {
   res.status(200).json({
@@ -8,5 +9,7 @@ router.get('/', (req, res) => {
     version: '1.0.0',
   });
 });
+
+router.use('/users', userRouter);
 
 module.exports = router;
