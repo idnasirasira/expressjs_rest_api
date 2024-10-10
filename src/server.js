@@ -2,6 +2,7 @@ const express = require('express');
 const morgan = require('morgan');
 const cors = require('cors');
 const errorHandler = require('./middleware/errorHandler');
+const routes = require('./routes');
 
 require('dotenv').config();
 
@@ -13,9 +14,8 @@ app.use(express.json());
 app.use(morgan('dev'));
 app.use(cors());
 
-app.get('/', (req, res) => {
-  res.send('Express server is running');
-});
+// Routes
+app.use('/api', routes);
 
 // Error Handler
 app.use(errorHandler);
