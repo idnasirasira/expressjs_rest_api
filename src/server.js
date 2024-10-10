@@ -1,6 +1,7 @@
 const express = require('express');
 const morgan = require('morgan');
 const cors = require('cors');
+const errorHandler = require('./middleware/errorHandler');
 
 require('dotenv').config();
 
@@ -15,6 +16,9 @@ app.use(cors());
 app.get('/', (req, res) => {
   res.send('Express server is running');
 });
+
+// Error Handler
+app.use(errorHandler);
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT} 🚀`);
